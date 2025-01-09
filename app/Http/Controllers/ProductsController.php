@@ -14,7 +14,7 @@ class ProductsController extends Controller
   public function index()
   {
     $products = Products::query()->orderBy('id', 'DESC')->get();
-    return view('shoping', compact('products'));
+    return view('products', compact('products'));
   }
 
   public function order(Request $request)

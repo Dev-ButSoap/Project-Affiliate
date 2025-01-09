@@ -7,7 +7,7 @@
             <form method="POST" action="{{ route('order') }}"
               class="rounded-md overflow-hidden bg-gray-400 flex flex-col group">
               @csrf
-              <div class="relative rounded-b-md h-[200px] shrink-0 overflow-hidden">
+              <div class="relative rounded-b-md h-[150px] xl:h-[200px] shrink-0 overflow-hidden">
                 <img src="{{ $product->product_image }}" alt="{{ $product->product }}"
                   class="w-full h-full object-cover group-hover:scale-105 transition">
                 <div

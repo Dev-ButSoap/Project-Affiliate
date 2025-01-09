@@ -6,16 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function () {
-  Route::get('/', [ProductsController::class, 'index'])->name('shoping');
+  Route::get('/', [ProductsController::class, 'index'])->name('products');
   Route::get('/commission', function () {
     return view('commission');
   })->name('commission');
-  Route::get('/dashboard', function () {
-    return view('dashboard');
-  })->name('dashboard');
-
+  Route::post('/order', [ProductsController::class, 'order'])->name('order');
 });
-Route::post('/order', [ProductsController::class, 'order'])->name('order');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -5,7 +5,7 @@
       <div class="flex">
         <!-- Logo -->
         <div class="shrink-0 flex items-center">
-          <a href="{{ route('shoping') }}"
+          <a href="{{ route('products') }}"
             class="flex items-center justify-center h-9 w-auto px-2 rounded bg-gray-800 dark:bg-gray-200">
             <div class="text-gray-200 dark:text-gray-800 font-semibold">
               AFFILIATE
@@ -15,14 +15,11 @@
 
         <!-- Navigation Links -->
         <div class="hidden space-x-4 sm:-my-px sm:ms-10 sm:flex">
-          <x-nav-link :href="route('shoping')" :active="request()->routeIs('shoping')">
-            {{ __('Shoping') }}
+          <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
+            {{ __('Products') }}
           </x-nav-link>
           <x-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
             {{ __('Commission') }}
-          </x-nav-link>
-          <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
           </x-nav-link>
         </div>
       </div>
@@ -65,19 +62,17 @@
                   d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
                   clip-rule="evenodd" />
               </svg>
-
             </button>
           </x-slot>
 
           <x-slot name="content">
             <x-dropdown-link :href="route('profile.edit')">
-              {{ __('โปรไฟล์') }}
+              <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+              <div class="text-sm text-gray-400">{{ Auth::user()->email }}</div>
             </x-dropdown-link>
 
-            <!-- Authentication -->
             <form method="POST" action="{{ route('logout') }}">
               @csrf
-
               <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                 {{ __('ออกจากระบบ') }}
               </x-dropdown-link>
@@ -102,23 +97,23 @@
   </div>
 
   <!-- Responsive Navigation Menu -->
-  <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
+  <div :class="{ 'right-0 befor:opacity-100 before:visible': open, '-right-[80%] before:opacity-0 before:invisible': !open }"
+    class="flex flex-col justify-between z-50 absolute top-[66px] w-[80%] h-[calc(100vh_-_64px)] bg-white dark:bg-gray-800 transition-all duration-300 ease-linear sm:hidden before:absolute before:w-full before:h-full before:-left-full before:bg-black/80 before:transition-all before:duration-200">
     <div class="pt-2 pb-3 space-y-1">
-      <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-        {{ __('Dashboard') }}
+      <x-responsive-nav-link :href="route('products')" :active="request()->routeIs('products')">
+        {{ __('Products') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
+        {{ __('Commission') }}
       </x-responsive-nav-link>
     </div>
 
     <!-- Responsive Settings Options -->
-    <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
-      <div class="px-4">
-        <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
-        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-      </div>
-
-      <div class="mt-3 space-y-1">
+    <div class="pt-2 pb-4 border-t border-gray-200 dark:border-gray-600">
+      <div class="space-y-1">
         <x-responsive-nav-link :href="route('profile.edit')">
-          {{ __('โปรไฟล์') }}
+          <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
+          <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
         </x-responsive-nav-link>
 
         <!-- Authentication -->
