@@ -1,22 +1,21 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-  return view('shoping');
-})->middleware('auth')->name('shoping');
 
 Route::middleware('auth')->group(function () {
-  Route::get('/shoping', function () {
-    return view('shoping');
-  })->name('shoping');
-
+  Route::get('/', [ProductsController::class, 'index'])->name('shoping');
+  Route::get('/commission', function () {
+    return view('commission');
+  })->name('commission');
   Route::get('/dashboard', function () {
     return view('dashboard');
   })->name('dashboard');
+
 });
+Route::post('/order', [ProductsController::class, 'order'])->name('order');
 
 Route::middleware('auth')->group(function () {
   Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

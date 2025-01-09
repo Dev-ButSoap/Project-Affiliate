@@ -36,7 +36,7 @@
     </main>
   </div>
 
-  <script>
+  <script type="text/javascript">
     const themeToggle = document.getElementById('__darkmode');
     const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ?
       'dark' : 'light');

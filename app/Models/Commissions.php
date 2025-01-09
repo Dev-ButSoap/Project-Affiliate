@@ -8,6 +8,7 @@ class Commissions extends Model
 {
   protected $fillable = [
     'user_id',
+    'order_id',
     'amount',
     'date',
   ];

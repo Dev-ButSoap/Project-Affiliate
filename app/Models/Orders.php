@@ -12,4 +12,9 @@ class Orders extends Model
     'amount',
     'date',
   ];
+
+  public function user()
+  {
+    return $this->hasOne(User::class, 'id', 'user_id');
+  }
 }

@@ -5,17 +5,21 @@
       <div class="flex">
         <!-- Logo -->
         <div class="shrink-0 flex items-center">
-          <a href="{{ route('dashboard') }}"
+          <a href="{{ route('shoping') }}"
             class="flex items-center justify-center h-9 w-auto px-2 rounded bg-gray-800 dark:bg-gray-200">
             <div class="text-gray-200 dark:text-gray-800 font-semibold">
               AFFILIATE
-            </div>          </a>
+            </div>
+          </a>
         </div>
 
         <!-- Navigation Links -->
         <div class="hidden space-x-4 sm:-my-px sm:ms-10 sm:flex">
           <x-nav-link :href="route('shoping')" :active="request()->routeIs('shoping')">
             {{ __('Shoping') }}
+          </x-nav-link>
+          <x-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
+            {{ __('Commission') }}
           </x-nav-link>
           <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
             {{ __('Dashboard') }}

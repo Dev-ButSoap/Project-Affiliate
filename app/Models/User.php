@@ -24,7 +24,6 @@ class User extends Authenticatable
     'affiliate_key',
     'password',
     'referrer_id',
-    'tier',
     'permission'
   ];
 
@@ -59,5 +58,10 @@ class User extends Authenticatable
         $model->affiliate_key = strtoupper(Str::random(6));
       }
     });
+  }
+
+  public function referrer()
+  {
+    return $this->hasOne(User::class, 'id', 'referrer_id');
   }
 }
