@@ -17,3 +17,40 @@
     @apply !ring-0 !ring-offset-0;
   }
 }
+
+/* DataTables */
+.dataTables_filter label {
+  @apply text-sm inline-flex gap-1 items-center text-gray-800 dark:text-gray-200 font-semibold;
+}
+
+.dataTables_filter label input {
+  @apply block text-sm text-gray-800 dark:text-gray-200 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 focus:ring-[0px] focus:border-gray-300 dark:focus:border-gray-600;
+}
+
+.dataTable thead th {
+  @apply px-6 py-3 cursor-pointer;
+}
+
+.dataTable tbody tr {
+  @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600;
+}
+
+.dataTable tbody tr td {
+  @apply px-6 py-4;
+}
+
+.dataTable .dataTables_empty {
+  @apply px-6 py-4 font-medium text-center;
+}
+
+.dataTables_paginate {
+  @apply float-right mt-4 text-gray-500 dark:text-gray-400;
+}
+
+.dataTables_paginate .paginate_button {
+  @apply cursor-pointer p-2 hover:text-gray-800 hover:dark:text-gray-200;
+}
+
+.dataTables_paginate .paginate_button.current {
+  @apply text-gray-800 dark:text-gray-200;
+}

@@ -16,7 +16,7 @@ return new class extends Migration
       $table->unsignedBigInteger('user_id');
       $table->unsignedBigInteger('order_id');
       $table->enum('percent', ['10%', '5%'])->nullable();
-      $table->decimal('amount', 10, 2);
+      $table->decimal('commission', 10, 2);
       $table->date('date');
       $table->timestamps();
   

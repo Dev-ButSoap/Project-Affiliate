@@ -10,7 +10,7 @@ class Commissions extends Model
     'user_id',
     'order_id',
     'percent',
-    'amount',
+    'commission',
     'date',
   ];
 
