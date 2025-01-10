@@ -15,6 +15,7 @@
 
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
+  @yield('style')
 </head>
 
 <body class="font-sans antialiased overflow-hidden">

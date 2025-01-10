@@ -20,15 +20,15 @@
 
 /* DataTables */
 .dataTables_filter label {
-  @apply text-sm inline-flex gap-1 items-center text-gray-800 dark:text-gray-200 font-semibold;
+  @apply inline-flex items-center gap-2 font-medium text-sm text-gray-700 dark:text-gray-300;
 }
 
 .dataTables_filter label input {
-  @apply block text-sm text-gray-800 dark:text-gray-200 rounded-md bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 focus:ring-[0px] focus:border-gray-300 dark:focus:border-gray-600;
+  @apply border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-0 rounded-md shadow-sm p-1;
 }
 
 .dataTable thead th {
-  @apply px-6 py-3 cursor-pointer;
+  @apply px-6 py-3 cursor-pointer whitespace-nowrap;
 }
 
 .dataTable tbody tr {
@@ -40,7 +40,7 @@
 }
 
 .dataTable .dataTables_empty {
-  @apply px-6 py-4 font-medium text-center;
+  @apply p-4 font-medium text-center;
 }
 
 .dataTables_paginate {

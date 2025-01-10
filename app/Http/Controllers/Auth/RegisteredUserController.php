@@ -44,7 +44,7 @@ class RegisteredUserController extends Controller
       'name' => $request->name,
       'email' => $request->email,
       'password' => Hash::make($request->password),
-      'referrer_id' => $ref_user ? $ref_user->id : null,
+      'referrer_id' => $request->ref ? $ref_user->id : null,
     ]);
 
     event(new Registered($user));

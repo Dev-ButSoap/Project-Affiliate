@@ -16,10 +16,10 @@
         <!-- Navigation Links -->
         <div class="hidden space-x-4 sm:-my-px sm:ms-10 sm:flex">
           <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
-            {{ __('Products') }}
+            {{ __('สินค้าทั้งหมด') }}
           </x-nav-link>
           <x-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
-            {{ __('Commission') }}
+            {{ __('AFFILIATE') }}
           </x-nav-link>
         </div>
       </div>
@@ -101,10 +101,10 @@
     class="flex flex-col justify-between z-50 absolute top-[66px] w-[80%] h-[calc(100vh_-_64px)] bg-white dark:bg-gray-800 transition-all duration-300 ease-linear sm:hidden before:absolute before:w-full before:h-full before:-left-full before:bg-black/80 before:transition-all before:duration-200">
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('products')" :active="request()->routeIs('products')">
-        {{ __('Products') }}
+        {{ __('สินค้าทั้งหมด') }}
       </x-responsive-nav-link>
       <x-responsive-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
-        {{ __('Commission') }}
+        {{ __('AFFILIATE') }}
       </x-responsive-nav-link>
     </div>
 
