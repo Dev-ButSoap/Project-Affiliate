@@ -33,10 +33,10 @@
       <x-primary-button class="w-full justify-center !text-base">
         {{ __('เข้าสู่ระบบ') }}
       </x-primary-button>
-      <div
-        class="text-center text-sm text-gray-600 dark:text-gray-400">
+      <div class="text-center text-sm text-gray-600 dark:text-gray-400">
         ยังไม่เป็นสมาชิก?
-        <a href="{{ route('register') }}" class="underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">สมัครสมาชิก</a>
+        <a href="{{ route('register') }}"
+          class="underline text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">สมัครสมาชิก</a>
       </div>
     </div>
   </form>

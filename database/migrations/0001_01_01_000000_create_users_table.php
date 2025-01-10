@@ -18,7 +18,6 @@ return new class extends Migration
       $table->string('email')->unique();
       $table->string('affiliate_key', 6);
       $table->unsignedBigInteger('referrer_id')->nullable();
-      $table->enum('tier', ['first', 'second'])->default('first');
       $table->enum('permission', ['admin', 'user'])->default('user');
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');

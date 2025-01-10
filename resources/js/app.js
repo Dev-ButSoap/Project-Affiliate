@@ -7,7 +7,7 @@ window.Alpine = Alpine;
 Alpine.start();
 
 import jQuery from 'jquery';
-window.$ = jQuery;
+window.$ = window.jQuery = jQuery;
 
 import swal from 'sweetalert2';
 window.Swal = swal;

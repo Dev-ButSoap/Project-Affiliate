@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\CommissionsController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Commissions;
 use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function () {
   Route::get('/', [ProductsController::class, 'index'])->name('products');
-  Route::get('/commission', function () {
-    return view('commission');
-  })->name('commission');
   Route::post('/order', [ProductsController::class, 'order'])->name('order');
+  Route::prefix('/commission')->group(function () {
+    Route::get('/', [CommissionsController::class, 'index'])->name('commission');
+    Route::get('/commission-datatable', [CommissionsController::class, 'dataTable'])->name('commission.datatable');
+  });
 });
 
 Route::middleware('auth')->group(function () {

@@ -1,7 +1,11 @@
 <x-guest-layout>
+  @php
+    $ref = request('ref');
+  @endphp
+
   <form method="POST" action="{{ route('register') }}">
     @csrf
-
+    <input type="hidden" name="ref" value="{{ $ref }}">
     <!-- Name -->
     <div>
       <x-input-label for="name" :value="__('ชื่อ')" />
