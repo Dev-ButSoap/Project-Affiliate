@@ -60,7 +60,7 @@
           ajax: "{{ route('commission.datatable') }}",
           columnDefs: [{
             targets: [0],
-            width: 150,
+            width: 120,
           }, ],
           columns: [{
               data: "date",

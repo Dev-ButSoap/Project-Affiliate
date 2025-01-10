@@ -43,14 +43,9 @@
           serverSide: true,
           ajax: "{{ route('order.datatable') }}",
           columnDefs: [{
-              targets: [0],
-              width: 150,
-            },
-            {
-              targets: [2],
-              width: 150,
-            },
-          ],
+            targets: [0],
+            width: 120,
+          }],
           columns: [{
               data: "date",
               title: "วันที่",

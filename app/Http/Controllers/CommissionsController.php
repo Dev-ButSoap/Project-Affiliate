@@ -12,8 +12,7 @@ class CommissionsController extends Controller
 {
   public function index()
   {
-    $copied = flash()->success('คัดลอกสำเร็จ');
-    return view('commission', compact('copied'));
+    return view('commission');
   }
 
   public function dataTable()
