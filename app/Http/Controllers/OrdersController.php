@@ -2,66 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Commissions;
 use App\Models\Orders;
-use App\Models\Products;
-use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\Facades\DataTables;
 
 class OrdersController extends Controller
 {
-  public function order(Request $request)
+  public function index()
   {
-    $request->validate([
-      'product_id' => 'required|exists:products,id',
-    ]);
-
-    try {
-      $product = Products::find($request->product_id);
-      $orders = Orders::create([
-        'user_id' => Auth::user()->id,
-        'product_ids' => $request->product_id,
-        'amount' => $product->price,
-        'date' => date('d-m-Y')
-      ]);
-      // คำนวณค่าคอมมิชชัน
-      $this->calculateCommission($orders);
-
-      flash()->success('ซื้อสินค้าสำเร็จ');
-      return back();
-    } catch (\Throwable $th) {
-      throw $th;
-      flash()->error('ซื้อสินค้าผิดพลาด');
-      return back();
-    }
+    return view('orders');
   }
 
-  private function calculateCommission(Orders $order)
+  public function dataTable()
   {
-    $user = $order->user;
-    if ($user->referrer_id) {
-      $commission = $order->amount * 0.10;
-      $percent = '10%';
-      if ($user->referrer->referrer_id) {
-        $commission = $order->amount * 0.05;
-        $percent = '5%';
-        $tier_1 = User::find($user->referrer->referrer_id);
-        Commissions::create([
-          'user_id' => $tier_1->id,
-          'order_id' => $order->id,
-          'percent' => '10%',
-          'commission' => $order->amount * 0.10,
-          'date' => $order->date
-        ]);
-      }
-      Commissions::create([
-        'user_id' => $user->referrer->id,
-        'order_id' => $order->id,
-        'percent' => $percent,
-        'commission' => $commission,
-        'date' => $order->date
-      ]);
-    }
+    $orders = Orders::where('user_id', Auth::user()->id)->orderby('created_at', 'DESC')->get();
+    return DataTables::of($orders)
+      ->addIndexColumn()
+      ->editColumn('date', function ($data) {
+        $date = Carbon::parse($data->date)->format('d/m/Y');
+        return $date;
+      })
+      ->addColumn('product', function ($data) {
+        return $data->product->product;
+      })
+      ->addColumn('price', function ($data) {
+        return $data->product->price;
+      })
+      ->toJson();
   }
 }

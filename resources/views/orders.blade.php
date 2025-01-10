@@ -1,30 +1,14 @@
 <x-app-layout>
   <x-slot name="header">
     <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-      {{ __('AFFILIATE') }}
+      {{ __('ประวัติการสั่งซื้อ') }}
     </h1>
   </x-slot>
 
   <div class="py-6">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-4">
-        <x-datatable id="__datatables">
-          <x-slot name="slot">
-            <div class="flex flex-col md:flex-row md:items-center gap-2 mb-4 md:mb-0 md:absolute right-0">
-              <x-input-label class="uppercase whitespace-nowrap">Affiliate Link</x-input-label>
-              <div class="flex items-center gap-1">
-                <x-text-input class="p-1 w-full md:min-w-[200px] lg:min-w-[250px] focus:ring-0" id="__aff_link"
-                  value="http://127.0.0.1:8000/register?ref={{ Auth::user()->affiliate_key }}" readonly />
-                <button class="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-                  onclick="clipboard('http\:\/\/127.0.0.1:8000\/register?ref={{ Auth::user()->affiliate_key }}');">
-                  <x-heroicon-o-document-duplicate id="__default_icon" title="Copy to clipboard"
-                    class="size-5 text-gray-800 dark:text-gray-200" />
-                  <x-heroicon-c-check id="__success_icon" title="Copied!" class="hidden size-5 text-green-400" />
-                </button>
-              </div>
-            </div>
-          </x-slot>
-        </x-datatable>
+        <x-datatable id="__datatables" />
       </div>
     </div>
   </div>
@@ -57,18 +41,19 @@
           bInfo: false,
           order: [],
           serverSide: true,
-          ajax: "{{ route('commission.datatable') }}",
+          ajax: "{{ route('order.datatable') }}",
           columnDefs: [{
-            targets: [0],
-            width: 150,
-          }, ],
+              targets: [0],
+              width: 150,
+            },
+            {
+              targets: [2],
+              width: 150,
+            },
+          ],
           columns: [{
               data: "date",
               title: "วันที่",
-            },
-            {
-              data: "name",
-              title: "ชื่อผู้ใช้",
             },
             {
               data: "product",
@@ -78,14 +63,6 @@
               data: "price",
               title: "ราคาสินค้า",
             },
-            {
-              data: "percent",
-              title: "เปอร์เซ็น",
-            },
-            {
-              data: "commission",
-              title: "ค่าคอมมิชชัน",
-            }
           ],
         });
       });

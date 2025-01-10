@@ -10,7 +10,7 @@
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-4 text-gray-900 dark:text-gray-100 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
           @foreach ($products as $product)
-            <form method="POST" action="{{ route('order') }}"
+            <form method="POST" action="{{ route('product.buy') }}"
               class="rounded-md overflow-hidden bg-gray-400 flex flex-col group">
               @csrf
               <div class="relative rounded-b-md h-[150px] xl:h-[200px] shrink-0 overflow-hidden">

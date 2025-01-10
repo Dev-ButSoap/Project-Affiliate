@@ -18,6 +18,9 @@
           <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
             {{ __('สินค้าทั้งหมด') }}
           </x-nav-link>
+          <x-nav-link :href="route('orders')" :active="request()->routeIs('orders')">
+            {{ __('ประวัติการสั่งซื้อ') }}
+          </x-nav-link>
           <x-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
             {{ __('AFFILIATE') }}
           </x-nav-link>
@@ -102,6 +105,9 @@
     <div class="pt-2 pb-3 space-y-1">
       <x-responsive-nav-link :href="route('products')" :active="request()->routeIs('products')">
         {{ __('สินค้าทั้งหมด') }}
+      </x-responsive-nav-link>
+      <x-responsive-nav-link :href="route('orders')" :active="request()->routeIs('orders')">
+        {{ __('ประวัติการสั่งซื้อ') }}
       </x-responsive-nav-link>
       <x-responsive-nav-link :href="route('commission')" :active="request()->routeIs('commission')">
         {{ __('AFFILIATE') }}

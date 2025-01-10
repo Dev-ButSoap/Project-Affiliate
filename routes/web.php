@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
   Route::get('/', [ProductsController::class, 'index'])->name('products');
+  Route::post('/buy-product', [ProductsController::class, 'buyProduct'])->name('product.buy');
 
-  Route::post('/order', [OrdersController::class, 'order'])->name('order');
+  Route::prefix('/orders')->group(function () {
+    Route::get('/', [OrdersController::class, 'index'])->name('orders');
+    Route::get('/order-datatable', [OrdersController::class, 'dataTable'])->name('order.datatable');
+  });
 
   Route::prefix('/commission')->group(function () {
     Route::get('/', [CommissionsController::class, 'index'])->name('commission');
